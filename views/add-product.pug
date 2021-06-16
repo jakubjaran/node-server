@@ -1,31 +1,11 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{docTitle}
-    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css")
-  body 
-    nav.navbar.is-primary(role="navigation", aria-label="main navigation")
-      .navbar-brand
-        a.navbar-item(href="/")
-          span.has-text-weight-bold MyShop
-        a.navbar-burger(role="button", aria-label="menu", aria-expanded="false", data-target="navbar")
-          span(aria-hidden="true")
-          span(aria-hidden="true")
-          span(aria-hidden="true")
+extends layouts/main-layout.pug
 
-      .navbar-menu(id="navbar")
-        .navbar-start
-          a.navbar-item(href="/") Shop
-          a.navbar-item(href="/admin/add-product") Add Product
-
-    main.columns.is-centered.mt-4
-      form.box.card.p-6(action="/admin/add-product", method="POST")
-        .field
-          label.label Title
-          .control 
-            input.input(type="text", name="title") 
-        .control
-          button.button.is-link(type="submit") Add Product
+block content
+  main.columns.is-centered.mt-4
+    form.box.card.p-6(action="/admin/add-product", method="POST")
+      .field
+        label.label Title
+        .control 
+          input.input(type="text", name="title") 
+      .control
+        button.button.is-link(type="submit") Add Product

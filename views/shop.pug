@@ -1,37 +1,17 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{docTitle}
-    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css")
-  body
-    nav.navbar.is-primary(role="navigation", aria-label="main navigation")
-      .navbar-brand
-        a.navbar-item(href="/")
-          span.has-text-weight-bold MyShop
-        a.navbar-burger(role="button", aria-label="menu", aria-expanded="false", data-target="navbar")
-          span(aria-hidden="true")
-          span(aria-hidden="true")
-          span(aria-hidden="true")
+extends layouts/main-layout.pug
 
-      .navbar-menu(id="navbar")
-        .navbar-start
-          a.navbar-item(href="/") Shop
-          a.navbar-item(href="/admin/add-product") Add Product
-
-    main.container.mt-4
-      if prods.length > 0
-        .columns.is-multiline
-          each product of prods
-            .column.is-one-third
-              .card
-                .card-image
-                  figure.image.is-1by1
-                    img(src="https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/1:1/w_1332,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg", alt="Product image")
-                .card-content
-                  p.title.is-4 #{product.title}
-                  p It's very interesting book
-      else
-        h1.is-size-1 No Products.
+block content
+  main.container.mt-4
+    if prods.length > 0
+      .columns.is-multiline
+        each product of prods
+          .column.is-one-third
+            .card
+              .card-image
+                figure.image.is-1by1
+                  img(src="https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/1:1/w_1332,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg", alt="Product image")
+              .card-content
+                p.title.is-4 #{product.title}
+                p It's very interesting book
+    else
+      h1.is-size-1 No Products.
