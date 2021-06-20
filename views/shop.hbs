@@ -1,0 +1,71 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{{docTitle}}</title>
+    <link
+      rel='stylesheet'
+      href='https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css'
+    />
+  </head>
+
+  <body>
+    <nav
+      class='navbar is-primary'
+      role='navigation'
+      aria-label='main navigation'
+    >
+      <div class='navbar-brand'>
+        <a href='/' class='navbar-item'>
+          <span class='has-text-weight-bold'>MyShop</span>
+        </a>
+        <a
+          class='navbar-burger'
+          role='button'
+          aria-label='menu'
+          aria-expanded='false'
+          data-target='navbar'
+        >
+          <span aria-hidden='true'></span>
+          <span aria-hidden='true'></span>
+          <span aria-hidden='true'></span>
+        </a>
+      </div>
+      <div class='navbar-menu' id='navbar'>
+        <div class='navbar-start'>
+          <a href='/' class='navbar-item'>Shop</a>
+          <a href='/admin/add-product' class='navbar-item'>Add Product</a>
+        </div>
+      </div>
+    </nav>
+    <main class='container mt-4'>
+      {{#if hasProducts}}
+        <div class='columns is-multiline'>
+          {{#each prods}}
+            <div class='column is-one-third'>
+              <div class='card'>
+                <div class='card-image'>
+                  <figure class='image is-1by1'>
+                    <img
+                      src='https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/1:1/w_1332,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg'
+                      alt='Product image'
+                    />
+                  </figure>
+                </div>
+                <div class='card-content'>
+                  <p class='title is-4'>{{this.title}}</p>
+                  <p>It's very interesting book</p>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <h1 class='is-size-1'>No Products.</h1>
+      {{/if}}
+    </main>
+  </body>
+
+</html>
