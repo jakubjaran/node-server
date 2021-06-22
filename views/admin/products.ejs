@@ -1,4 +1,31 @@
 <%- include('../includes/head.ejs')%> <%-
 include('../includes/navigation.ejs')%>
-<h1 class="is-size-1">Admin products</h1>
+<main class="container mt-4">
+  <% if (prods.length > 0) { %>
+  <div class="columns is-multiline">
+    <% for (product of prods) { %>
+    <div class="column is-one-third">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-1by1">
+            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
+          </figure>
+        </div>
+        <div class="card-content">
+          <p class="title is-4"><%= product.title %></p>
+          <p><%= product.description %></p>
+          <p>$<%= product.price %></p>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Edit</a>
+          <a href="#" class="card-footer-item">Delete</a>
+        </footer>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <% } else { %>
+  <h1 class="is-size-1">No Products.</h1>
+  <% } %>
+</main>
 <%- include('../includes/end.ejs')%>
