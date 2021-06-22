@@ -8,16 +8,17 @@ include('../includes/navigation.ejs')%>
       <div class="card">
         <div class="card-image">
           <figure class="image is-1by1">
-            <img
-              src="https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/1:1/w_1332,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg"
-              alt="Product image"
-            />
+            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
           </figure>
         </div>
         <div class="card-content">
           <p class="title is-4"><%= product.title %></p>
-          <p>It's very interesting book</p>
+          <p><%= product.description %></p>
+          <p>$<%= product.price %></p>
         </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Add to Cart</a>
+        </footer>
       </div>
     </div>
     <% } %>
