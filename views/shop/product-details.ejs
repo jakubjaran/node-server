@@ -6,9 +6,7 @@ include('../includes/navigation.ejs')%>
     <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
     <p><%= product.description %></p>
     <p class="is-size-3">$<%= product.price %></p>
-    <form action="#" method="POST">
-      <button type="submit" class="button is-link">Add to Cart</button>
-    </form>
+    <%- include('../includes/add-to-cart.ejs') %>
   </div>
 </main>
 <%- include('../includes/end.ejs')%>
