@@ -1,7 +1,7 @@
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-  res.render('admin/add-product', { docTitle: 'MyShop Admin - Add Product' });
+  res.render('admin/edit-product', { docTitle: 'MyShop Admin - Add Product' });
 };
 
 exports.getProducts = (req, res, next) => {
@@ -10,6 +10,17 @@ exports.getProducts = (req, res, next) => {
       prods: products,
       docTitle: 'MyShop Admin - All Products',
     });
+  });
+};
+
+exports.getEditProduct = (req, res, next) => {
+  const editMode = req.query.edit;
+  if (!editMode) {
+    return res.redirect('/');
+  }
+  res.render('admin/edit-product', {
+    docTitle: 'MyShop Admin - Edit Product',
+    editMode: true,
   });
 };
 
