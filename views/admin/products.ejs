@@ -22,7 +22,21 @@ include('../includes/navigation.ejs')%>
             class="card-footer-item"
             >Edit</a
           >
-          <a href="#" class="card-footer-item">Delete</a>
+          <div class="card-footer-item">
+            <form
+              method="POST"
+              class="columns is-desktop is-vcentered"
+              action="/admin/delete-product"
+            >
+              <button
+                type="submit"
+                class="button is-link is-light has-background-white"
+              >
+                Delete
+              </button>
+              <input type="hidden" name="productId" value="<%= product.id %>" />
+            </form>
+          </div>
         </footer>
       </div>
     </div>
