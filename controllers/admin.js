@@ -1,7 +1,10 @@
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-  res.render('admin/edit-product', { docTitle: 'MyShop Admin - Add Product' });
+  res.render('admin/edit-product', {
+    docTitle: 'MyShop Admin - Add Product',
+    editMode: false,
+  });
 };
 
 exports.getProducts = (req, res, next) => {
@@ -18,9 +21,16 @@ exports.getEditProduct = (req, res, next) => {
   if (!editMode) {
     return res.redirect('/');
   }
-  res.render('admin/edit-product', {
-    docTitle: 'MyShop Admin - Edit Product',
-    editMode: true,
+  const productId = req.params.productId;
+  Product.findById(productId, product => {
+    if (!product) {
+      return res.redirect('/');
+    }
+    res.render('admin/edit-product', {
+      docTitle: 'MyShop Admin - Edit Product',
+      editMode: true,
+      product: product,
+    });
   });
 };
 
