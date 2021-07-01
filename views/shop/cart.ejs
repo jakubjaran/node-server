@@ -1,4 +1,15 @@
-<%- include('../includes/head.ejs')%> <%-
-include('../includes/navigation.ejs')%>
-<h1 class="is-size-1">Cart</h1>
+<%- include('../includes/head.ejs')%> <%-include('../includes/navigation.ejs')%>
+
+<main class="container mt-4">
+  <% if (products.length > 0) { %>
+  <ul>
+    <% products.forEach(p => { %>
+    <li><%= p.productData.title %> (<%= p.qty %>)</li>
+    <% }) %>
+  </ul>
+  <% } else { %>
+  <h1 class="is-size-1">No Products in Cart!</h1>
+  <% } %>
+</main>
+
 <%- include('../includes/end.ejs')%>
