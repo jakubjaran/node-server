@@ -5,7 +5,7 @@ const express = require('express');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
-const db = require('./utils/database');
+const sequelize = require('./utils/database');
 
 const app = express();
 
@@ -22,4 +22,12 @@ const errorController = require('./controllers/error');
 
 app.use(errorController.getPage404);
 
-app.listen(3000);
+sequelize
+  .sync()
+  .then(result => {
+    // console.log(result);
+    app.listen(3000);
+  })
+  .catch(err => {
+    console.log(err);
+  });
