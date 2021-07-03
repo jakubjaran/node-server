@@ -10,17 +10,27 @@ exports.getAddProduct = (req, res, next) => {
 exports.postAddProduct = (req, res, next) => {
   const { title, imageUrl, price, description } = req.body;
   const product = new Product(null, title, imageUrl, price, description);
-  product.save();
-  res.redirect('/admin/products');
+  product
+    .save()
+    .then(() => {
+      res.redirect('/admin/products');
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll(products => {
-    res.render('admin/products', {
-      prods: products,
-      docTitle: 'MyShop Admin - All Products',
+  Product.fetchAll()
+    .then(([rows, _]) => {
+      res.render('admin/products', {
+        prods: rows,
+        docTitle: 'MyShop Admin - All Products',
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  });
 };
 
 exports.getEditProduct = (req, res, next) => {
