@@ -25,12 +25,14 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const productId = req.params.productId;
-  Product.findById(productId, product => {
-    res.render('shop/product-details.ejs', {
-      docTitle: `MyShop - ${product.title}`,
-      product: product,
-    });
-  });
+  Product.findById(productId)
+    .then(([products, _]) => {
+      res.render('shop/product-details.ejs', {
+        docTitle: `MyShop - ${product.title}`,
+        product: products[0],
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getCart = (req, res, next) => {
