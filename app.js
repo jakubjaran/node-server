@@ -5,7 +5,7 @@ const express = require('express');
 // const adminRoutes = require('./routes/admin');
 // const shopRoutes = require('./routes/shop');
 
-const mongoConnect = require('./utils/database');
+const { connectMongo } = require('./utils/database');
 
 const app = express();
 
@@ -22,7 +22,6 @@ const errorController = require('./controllers/error');
 
 app.use(errorController.getPage404);
 
-mongoConnect(client => {
-  console.log(client);
+connectMongo(() => {
   app.listen(3000);
 });
