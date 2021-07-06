@@ -1,8 +1,1 @@
-const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize('node-express', 'root', 'mysqlnode', {
-  dialect: 'mysql',
-  host: 'localhost',
-});
-
-module.exports = sequelize;
+// mongodb+srv://node:node-express1@cluster0.hqcee.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
