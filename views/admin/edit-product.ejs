@@ -52,7 +52,7 @@ include('../includes/navigation.ejs')%>
       </div>
     </div>
     <% if (editMode) { %>
-    <input type="hidden" name="productId" value="<%= product.id %>" />
+    <input type="hidden" name="productId" value="<%= product._id %>" />
     <% } %>
     <div class="control">
       <button class="button is-link" type="submit">
