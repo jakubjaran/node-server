@@ -23,17 +23,17 @@ exports.getProducts = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-// exports.getProduct = (req, res, next) => {
-//   const productId = req.params.productId;
-//   Product.findByPk(productId)
-//     .then(product => {
-//       res.render('shop/product-details.ejs', {
-//         docTitle: `MyShop - ${product.title}`,
-//         product: product,
-//       });
-//     })
-//     .catch(err => console.log(err));
-// };
+exports.getProduct = (req, res, next) => {
+  const productId = req.params.productId;
+  Product.findById(productId)
+    .then(product => {
+      res.render('shop/product-details.ejs', {
+        docTitle: `MyShop - ${product.title}`,
+        product: product,
+      });
+    })
+    .catch(err => console.log(err));
+};
 
 // exports.getCart = (req, res, next) => {
 //   req.user
