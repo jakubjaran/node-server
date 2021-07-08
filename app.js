@@ -6,6 +6,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 const { connectMongo } = require('./utils/database');
+const User = require('./models/user');
 
 const app = express();
 
@@ -14,6 +15,15 @@ app.set('views', 'views');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  User.findById('60e6997e11ded4abe2273510')
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => console.log(err));
+});
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
