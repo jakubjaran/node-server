@@ -86,39 +86,16 @@ exports.postDeleteCartItem = (req, res, next) => {
 //     });
 // };
 
-// exports.postCreateOrder = (req, res, next) => {
-//   let fetchedCart;
-//   req.user
-//     .getCart()
-//     .then(cart => {
-//       fetchedCart = cart;
-//       return cart.getProducts();
-//     })
-//     .then(products => {
-//       req.user
-//         .createOrder()
-//         .then(order => {
-//           order.addProducts(
-//             products.map(product => {
-//               product.orderItem = { quantity: product.cartItem.quantity };
-//               return product;
-//             })
-//           );
-//         })
-//         .catch(err => {
-//           console.log(err);
-//         });
-//     })
-//     .then(result => {
-//       return fetchedCart.setProducts(null);
-//     })
-//     .then(result => {
-//       res.redirect('/orders');
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// };
+exports.postCreateOrder = (req, res, next) => {
+  req.user
+    .createOrder()
+    .then(result => {
+      res.redirect('/orders');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 // exports.getCheckout = (req, res, next) => {
 //   res.render('shop/checkout', {
