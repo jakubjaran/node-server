@@ -50,12 +50,21 @@ class User {
       .find()
       .toArray()
       .then(products => {
-        return this.cart.items.map(cp => {
+        let cartProducts = this.cart.items.map(cp => {
           const p = products.find(
             prod => prod._id.toString() === cp.productId.toString()
           );
-          return { ...p, quantity: cp.quantity };
+          return { ...p, quantity: p ? cp.quantity : null };
         });
+        cartProducts = cartProducts.filter(cp => cp.quantity !== null);
+        if (cartProducts.length < 1 && this.cart.items.length > 0) {
+          this.cart = { items: [] };
+          db.collection('users').updateOne(
+            { _id: new ObjectId(this._id) },
+            { $set: { cart: { items: cartProducts } } }
+          );
+        }
+        return cartProducts;
       });
   }
 
