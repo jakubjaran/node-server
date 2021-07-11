@@ -72,19 +72,19 @@ exports.postDeleteCartItem = (req, res, next) => {
     });
 };
 
-// exports.getOrders = (req, res, next) => {
-//   req.user
-//     .getOrders({ include: ['products'] })
-//     .then(orders => {
-//       res.render('shop/orders', {
-//         docTitle: 'MyShop - Your Orders',
-//         orders: orders,
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// };
+exports.getOrders = (req, res, next) => {
+  req.user
+    .getOrders()
+    .then(orders => {
+      res.render('shop/orders', {
+        docTitle: 'MyShop - Your Orders',
+        orders: orders,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 exports.postCreateOrder = (req, res, next) => {
   req.user
