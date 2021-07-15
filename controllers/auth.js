@@ -3,3 +3,8 @@ exports.getLogin = (req, res, next) => {
     docTitle: 'MyShop - Login',
   });
 };
+
+exports.postLogin = (req, res, next) => {
+  res.setHeader('Set-Cookie', 'isLoggedIn=true');
+  res.redirect('/');
+};
