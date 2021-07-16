@@ -4,6 +4,7 @@ exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     docTitle: 'MyShop Admin - Add Product',
     editMode: false,
+    isAuth: req.session.isLoggedIn,
   });
 };
 
@@ -14,7 +15,7 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     description: description.trim(),
     imageUrl: imageUrl,
-    userId: req.user._id,
+    userId: req.session.user._id,
   });
   newProduct
     .save()
@@ -33,6 +34,7 @@ exports.getProducts = (req, res, next) => {
       res.render('admin/products', {
         prods: products,
         docTitle: 'MyShop Admin - All Products',
+        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => console.log(err));
@@ -53,6 +55,7 @@ exports.getEditProduct = (req, res, next) => {
         docTitle: 'MyShop Admin - Edit Product',
         editMode: true,
         product: product,
+        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => console.log(err));

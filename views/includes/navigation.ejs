@@ -21,8 +21,10 @@
       <a href="/products" class="navbar-item">Products</a>
       <a href="/cart" class="navbar-item">Cart</a>
       <a href="/orders" class="navbar-item">Orders</a>
-      <!-- <a href="/admin/add-product" class="navbar-item">Add Product</a> -->
-      <!-- <a href="/admin/products" class="navbar-item">Admin Products</a> -->
+      <% if (isAuth) { %>
+      <a href="/admin/add-product" class="navbar-item">Add Product</a>
+      <a href="/admin/products" class="navbar-item">Admin Products</a>
+      <% } %>
     </div>
     <div class="navbar-end">
       <a href="/login" class="navbar-item">Login</a>
