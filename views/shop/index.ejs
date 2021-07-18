@@ -24,9 +24,11 @@ include('../includes/navigation.ejs')%>
               >Details</a
             >
           </div>
+          <% if (isAuth) { %>
           <div class="card-footer-item">
             <%- include('../includes/add-to-cart.ejs') %>
           </div>
+          <% } %>
         </footer>
       </div>
     </div>
