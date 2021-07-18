@@ -27,7 +27,19 @@
       <% } %>
     </div>
     <div class="navbar-end">
+      <% if (isAuth) { %>
+      <form
+        action="/logout"
+        method="POST"
+        class="columns is-desktop is-vcentered mr-1"
+      >
+        <button type="submit" class="is-link has-background-black button">
+          Logout
+        </button>
+      </form>
+      <% } else { %>
       <a href="/login" class="navbar-item">Login</a>
+      <% } %>
     </div>
   </div>
 </nav>
