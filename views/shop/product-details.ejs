@@ -6,7 +6,7 @@ include('../includes/navigation.ejs')%>
     <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
     <p><%= product.description %></p>
     <p class="is-size-3">$<%= product.price %></p>
-    <%- include('../includes/add-to-cart.ejs') %>
+    <% if (isAuth) { %> <%- include('../includes/add-to-cart.ejs') %> <% } %>
   </div>
 </main>
 <%- include('../includes/end.ejs')%>
