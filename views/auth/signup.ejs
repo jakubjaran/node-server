@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs')%> <%-
+include('../includes/navigation.ejs')%>
+<main class="columns is-centered mt-4">
+  <form action="/signup" method="POST" class="column is-half card p-6">
+    <div class="field">
+      <label for="E-mail" class="label">E-mail</label>
+      <div class="control">
+        <input type="email" name="email" id="email" class="input" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="password" class="label">Password</label>
+      <div class="control">
+        <input type="password" name="password" id="password" class="input" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="confirmPassword" class="label">Confirm Password</label>
+      <div class="control">
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          class="input"
+        />
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-link" type="submit">Signup</button>
+    </div>
+  </form>
+</main>
+<%- include('../includes/end.ejs')%>

@@ -29,3 +29,12 @@ exports.postLogout = (req, res, next) => {
     res.redirect('/');
   });
 };
+
+exports.getSignup = (req, res, next) => {
+  res.render('auth/signup', {
+    docTitle: 'MyShop - Signup',
+    isAuth: req.session.isLoggedIn,
+  });
+};
+
+exports.postSignup = (req, res, next) => {};

@@ -26,12 +26,12 @@
       <a href="/admin/products" class="navbar-item">Admin Products</a>
       <% } %>
     </div>
-    <div class="navbar-end">
+    <div class="navbar-end mr-2">
       <% if (isAuth) { %>
       <form
         action="/logout"
         method="POST"
-        class="columns is-desktop is-vcentered mr-1"
+        class="columns is-desktop is-vcentered"
       >
         <button type="submit" class="is-link has-background-black button">
           Logout
@@ -39,6 +39,7 @@
       </form>
       <% } else { %>
       <a href="/login" class="navbar-item">Login</a>
+      <a href="/signup" class="navbar-item">Signup</a>
       <% } %>
     </div>
   </div>
