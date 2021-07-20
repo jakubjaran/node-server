@@ -8,6 +8,7 @@ exports.getIndex = (req, res, next) => {
         prods: products,
         docTitle: 'MyShop',
         isAuth: req.session.isLoggedIn,
+        csrfToken: req.csrfToken(),
       });
     })
     .catch(err => console.log(err));
