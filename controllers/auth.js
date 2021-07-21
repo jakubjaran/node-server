@@ -6,6 +6,7 @@ exports.getLogin = (req, res, next) => {
   console.log(req.session.isLoggedIn);
   res.render('auth/login', {
     docTitle: 'MyShop - Login',
+    errorMessage: req.flash('error'),
   });
 };
 
@@ -14,6 +15,7 @@ exports.postLogin = (req, res, next) => {
   User.findOne({ email: email })
     .then(user => {
       if (!user) {
+        req.flash('error', 'Invalid email or password.');
         return res.redirect('/login');
       }
       bcrypt
