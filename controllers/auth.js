@@ -6,7 +6,6 @@ exports.getLogin = (req, res, next) => {
   console.log(req.session.isLoggedIn);
   res.render('auth/login', {
     docTitle: 'MyShop - Login',
-    isAuth: req.session.isLoggedIn,
   });
 };
 
@@ -52,7 +51,6 @@ exports.postLogout = (req, res, next) => {
 exports.getSignup = (req, res, next) => {
   res.render('auth/signup', {
     docTitle: 'MyShop - Signup',
-    isAuth: req.session.isLoggedIn,
   });
 };
 

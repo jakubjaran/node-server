@@ -59,6 +59,7 @@ include('../includes/navigation.ejs')%>
         <% if (editMode) { %>Update Product<% } else { %>Add Product<% } %>
       </button>
     </div>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
   </form>
 </main>
 <%- include('../includes/end.ejs')%>

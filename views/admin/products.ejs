@@ -28,6 +28,7 @@ include('../includes/navigation.ejs')%>
               class="columns is-desktop is-vcentered"
               action="/admin/delete-product"
             >
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
               <button
                 type="submit"
                 class="button is-link is-light has-background-white"

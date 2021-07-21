@@ -17,6 +17,7 @@ include('../includes/navigation.ejs')%>
     <div class="control">
       <button class="button is-link" type="submit">Login</button>
     </div>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
   </form>
 </main>
 <%- include('../includes/end.ejs')%>

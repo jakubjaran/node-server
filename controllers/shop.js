@@ -7,8 +7,6 @@ exports.getIndex = (req, res, next) => {
       res.render('shop/index', {
         prods: products,
         docTitle: 'MyShop',
-        isAuth: req.session.isLoggedIn,
-        csrfToken: req.csrfToken(),
       });
     })
     .catch(err => console.log(err));
@@ -20,7 +18,6 @@ exports.getProducts = (req, res, next) => {
       res.render('shop/product-list', {
         prods: products,
         docTitle: 'MyShop - All Products',
-        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => console.log(err));
@@ -33,7 +30,6 @@ exports.getProduct = (req, res, next) => {
       res.render('shop/product-details.ejs', {
         docTitle: `MyShop - ${product.title}`,
         product: product,
-        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => console.log(err));
@@ -48,7 +44,6 @@ exports.getCart = (req, res, next) => {
       res.render('shop/cart', {
         docTitle: 'MyShop - Your Cart',
         products: products,
-        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => {
@@ -86,7 +81,6 @@ exports.getOrders = (req, res, next) => {
       res.render('shop/orders', {
         docTitle: 'MyShop - Your Orders',
         orders: orders,
-        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => {
@@ -105,7 +99,7 @@ exports.postCreateOrder = (req, res, next) => {
       const order = new Order({
         products: products,
         user: {
-          name: req.user.username,
+          email: req.user.email,
           userId: req.user._id,
         },
       });

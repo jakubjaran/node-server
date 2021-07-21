@@ -4,7 +4,6 @@ exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     docTitle: 'MyShop Admin - Add Product',
     editMode: false,
-    isAuth: req.session.isLoggedIn,
   });
 };
 
@@ -34,7 +33,6 @@ exports.getProducts = (req, res, next) => {
       res.render('admin/products', {
         prods: products,
         docTitle: 'MyShop Admin - All Products',
-        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => console.log(err));
@@ -55,7 +53,6 @@ exports.getEditProduct = (req, res, next) => {
         docTitle: 'MyShop Admin - Edit Product',
         editMode: true,
         product: product,
-        isAuth: req.session.isLoggedIn,
       });
     })
     .catch(err => console.log(err));
