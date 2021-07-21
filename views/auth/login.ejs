@@ -1,5 +1,5 @@
 <%- include('../includes/head.ejs')%> <%-
-include('../includes/navigation.ejs')%> <% if (errorMessage.length > 0) { %>
+include('../includes/navigation.ejs')%> <% if (errorMessage) { %>
 <div class="has-background-danger px-6 py-2">
   <p class="has-text-primary-light"><%= errorMessage %></p>
 </div>
