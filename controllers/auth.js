@@ -31,15 +31,18 @@ exports.postLogin = (req, res, next) => {
             req.session.user = user;
             return req.session.save(err => {
               if (err) {
+                req.flash('error', 'An error occured.');
                 console.log(err);
               }
               res.redirect('/');
             });
           }
+          req.flash('error', 'Invalid email or password.');
           res.redirect('/login');
         })
         .catch(err => {
           console.log(err);
+          req.flash('error', 'An error occured.');
           res.redirect('/login');
         });
     })
@@ -56,8 +59,15 @@ exports.postLogout = (req, res, next) => {
 };
 
 exports.getSignup = (req, res, next) => {
+  let message = req.flash('error');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render('auth/signup', {
     docTitle: 'MyShop - Signup',
+    errorMessage: message,
   });
 };
 
@@ -66,6 +76,7 @@ exports.postSignup = (req, res, next) => {
   User.findOne({ email: email })
     .then(user => {
       if (user) {
+        req.flash('error', 'User with that email already exists.');
         return res.redirect('/signup');
       }
       return bcrypt
